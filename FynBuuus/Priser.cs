@@ -15,6 +15,10 @@ namespace FynBuuus
         public int SGebyrAN { get; set; }
         public int PrisVenteAN { get; set; }
         public int PrisKøreAN { get; set; }
-        public int SGebyr { get; set; }
+        public int SGebyrWH { get; set; }
+        public int PrisVenteWH { get; set; }
+        public int PriserKøreWH { get; set; }
+        public int PrisTrappeLøft { get; set; }
+        public string CVRnr { get; set; }
     }
 }
