@@ -8,5 +8,6 @@ namespace FynBuuus
 {
     class Vogntype
     {
+
     }
 }
