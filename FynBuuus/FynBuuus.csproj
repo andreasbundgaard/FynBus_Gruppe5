@@ -53,11 +53,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Detaljer_Window.xaml.cs">
+      <DependentUpon>Detaljer_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Firma.cs" />
+    <Compile Include="Info_Window.xaml.cs">
+      <DependentUpon>Info_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Priser.cs" />
     <Compile Include="Tilladelser.cs" />
     <Compile Include="Vogne.cs" />
     <Compile Include="Vogntype.cs" />
+    <Page Include="Detaljer_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Info_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

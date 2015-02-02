@@ -10,24 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FynBuuus
-{
+namespace FynBuuus {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Info_Window.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
+    public partial class Info_Window : Window {
+        public Info_Window() {
             InitializeComponent();
         }
 
-        private void Information_Click(object sender, RoutedEventArgs e) {
-            new Info_Window().Show();
+        private void Oversigt_Click(object sender, RoutedEventArgs e) {
+            new MainWindow().Show();
             this.Close(); 
+        }
+
+        private void Detaljer_Click(object sender, RoutedEventArgs e) {
+            new Detaljer_Window().Show();
+            this.Close();
         }
     }
 }

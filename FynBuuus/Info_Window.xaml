@@ -1,0 +1,11 @@
+﻿<Window x:Class="FynBuuus.Info_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Info_Window" Height="300" Width="539.004">
+    <Grid>
+        <ListBox HorizontalAlignment="Left" Height="250" Margin="10,10,0,0" VerticalAlignment="Top" Width="250"/>
+        <Button Name="Detaljer" Content="Detaljer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Margin="280,10,0,0" Click="Detaljer_Click"/>
+        <Button Name="Oversigt" Content="Tilbage til oversigt" HorizontalAlignment="Left" Margin="280,238,0,0" VerticalAlignment="Top" Width="105" Click="Oversigt_Click"/>
+
+    </Grid>
+</Window>
