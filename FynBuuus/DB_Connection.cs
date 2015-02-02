@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows
 
 namespace FynBuuus {
     class DB_Connection {
@@ -29,12 +30,26 @@ namespace FynBuuus {
                 SqlDataReader reader;
                 reader = sqlCmd.ExecuteReader();
                 Firma firma = new Firma();
+                Priser priser = new Priser();
+                List<Priser> prisliste = new List<Priser>();
                 while (reader.Read())
                 {
-                    Person Person = new Person();
-                    Person.CPRNR = reader["P_CPRNR"].ToString();
-                    Person.Name = reader["P_Name"].ToString();
-                    PersonList.Add(Person);
+
+                    firma.CVRnr = reader["CVRnr"].ToString();
+                    firma.Navn = reader["Navn"].ToString();
+                    firma.YderligOplys = reader["YderligOplys"].ToString();
+                    firma.SekundFirma = reader["SekunFirma"].ToString();
+                    priser.SGebyrH = Convert.ToInt32(reader["OpstartsGebyrH"]);
+                    priser.PrisVenteH = Convert.ToInt32(reader["TimeprisVentetidH"]);
+                    priser.PrisKøreH = Convert.ToInt32(reader["TimepriskoretidH"]);
+                    priser.SGebyrAN = Convert.ToInt32(reader["OpstartsGebyrAN"]);
+                    priser.PrisVenteAN = Convert.ToInt32(reader["TimeprisVentetidAN"]);
+                    priser.PrisKøreAN = Convert.ToInt32(reader["TimeprisKoretidAN"]);
+                    priser.SGebyrWH = Convert.ToInt32(reader["OpstartsGebyrWH"]);
+                    priser.PrisVenteWH = Convert.ToInt32(reader["TimeprisVentetidWH"]);
+                    priser.PriserKøreWH = Convert.ToInt32(reader["TimeprisKoretidWH"]);
+                    prisliste.Add(priser);
+                    firma.Prisliste = prisliste;
                 }
             }
             catch (Exception e)
@@ -47,5 +62,6 @@ namespace FynBuuus {
                 con.Dispose();
             }
         }
+
     }
 }
