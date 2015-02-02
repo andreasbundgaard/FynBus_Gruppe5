@@ -30,5 +30,9 @@ namespace FynBuuus {
             new Detaljer_Window().Show();
             this.Close();
         }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
     }
 }

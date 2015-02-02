@@ -55,6 +55,9 @@
     </ApplicationDefinition>
     <Compile Include="Controller.cs" />
     <Compile Include="DB_Connection.cs" />
+    <Compile Include="Detaljer_Window.xaml.cs">
+      <DependentUpon>Detaljer_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Firma.cs" />
     <Compile Include="Info_Window.xaml.cs">
       <DependentUpon>Info_Window.xaml</DependentUpon>

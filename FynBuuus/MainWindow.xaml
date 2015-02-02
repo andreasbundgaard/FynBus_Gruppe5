@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button Name ="Information"  Content="Information" HorizontalAlignment="Left" Margin="70,127,0,0" VerticalAlignment="Top" Width="80" Height="25" Click="Information_Click"/>
-        <Label Content="CVR Nummer - Firma Navn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="292,15,0,0"/>
-        <ListBox Name ="CVR_List" HorizontalAlignment="Left" Height="264" VerticalAlignment="Top" Width="254" Margin="253,46,0,0"/>
+        <Button Name ="Information"  Content="Information" HorizontalAlignment="Left" Margin="350,45,0,0" VerticalAlignment="Top" Width="80" Height="25" Click="Information_Click"/>
+        <Label Content="CVR Nummer - Firma Navn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,10,0,0"/>
+        <ListBox Name ="CVR_List" HorizontalAlignment="Left" Height="265" VerticalAlignment="Top" Width="255" Margin="10,45,0,0"/>
 
     </Grid>
 </Window>

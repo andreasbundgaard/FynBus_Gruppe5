@@ -20,5 +20,14 @@ namespace FynBuuus {
         public Detaljer_Window() {
             InitializeComponent();
         }
+
+        private void Ændre_Info_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void Til_Info_Window_Click(object sender, RoutedEventArgs e) {
+            new Info_Window().Show();
+            this.Close();
+        }
     }
 }

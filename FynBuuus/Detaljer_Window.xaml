@@ -3,6 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Detaljer_Window" Height="300" Width="300">
     <Grid>
-        
+        <ListBox Name="Detaljer_List" HorizontalAlignment="Left" Height="250" Margin="10,10,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Name="Ændre_Info" Content="Ændre Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" Margin="185,10,0,0" Click="Ændre_Info_Click"/>
+        <Button Name="Slet_Info" Content="Slet Info" HorizontalAlignment="Left" Margin="185,74,0,0" VerticalAlignment="Top" Width="85"/>
+        <Button Name="Til_Info_Window" Content="Til Information" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" Margin="185,238,0,0" Click="Til_Info_Window_Click"/>
+
     </Grid>
 </Window>
