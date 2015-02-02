@@ -53,6 +53,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Firma.cs" />
+    <Compile Include="Priser.cs" />
+    <Compile Include="Tilladelser.cs" />
+    <Compile Include="Vogne.cs" />
+    <Compile Include="Vogntype.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
