@@ -18,9 +18,10 @@ namespace FynBuuus {
                 );
             return con;
         }
-        public void GetFirmaPriser(string CVRnr)
+        public static Firma GetFirmaPriser(string CVRnr)
         {
             SqlConnection con = connectToSql();
+            Firma firma = new Firma();
             try
             {
                 con.Open();
@@ -29,7 +30,6 @@ namespace FynBuuus {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlDataReader reader;
                 reader = sqlCmd.ExecuteReader();
-                Firma firma = new Firma();
                 Priser priser = new Priser();
                 List<Priser> prisliste = new List<Priser>();
                 while (reader.Read())
@@ -61,7 +61,53 @@ namespace FynBuuus {
                 con.Close();
                 con.Dispose();
             }
+            return firma;
         }
+        public static Firma GetFirmaTilladelser(string CVRnr)
+        {
+            SqlConnection con = connectToSql();
+            Firma firma = new Firma();
+            try
+            {
+                con.Open();
+                SqlCommand sqlCmd = new SqlCommand("GetFirmaTilladelser", con);
+                sqlCmd.Parameters.Add(new SqlParameter("@CVRnr", CVRnr));
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader;
+                reader = sqlCmd.ExecuteReader();
+                Tilladelser tilladelse = new Tilladelser();
+                List<Tilladelser> tilladelsesliste = new List<Tilladelser>();
+                while (reader.Read())
+                {
 
+                    firma.CVRnr = reader["CVRnr"].ToString();
+                    firma.Navn = reader["Navn"].ToString();
+                    firma.YderligOplys = reader["YderligOplys"].ToString();
+                    firma.SekundFirma = reader["SekunFirma"].ToString();
+                    tilladelse.TilladelsesType = Convert.ToInt32(reader["TilladelsesType"]);
+                    tilladelse.TilladelsesNr = Convert.ToInt32(reader["TilladelseNr"]);
+                    tilladelse.CVRnr = Convert.ToInt32(reader["CVRnr"]); //Navn skal sikkert ændres i databasen
+                    tilladelse.UdstedendeMyndighed = Convert.ToInt32(reader["UdstedendeMyndighed"]);
+                    tilladelse.RegNummer = Convert.ToInt32(reader["RegNummer"]);
+                    tilladelse.BemærkningerTilDoku = Convert.ToInt32(reader["BemaerkningerTilDoku"]);
+                    tilladelse.KlarTilDrift = Convert.ToInt32(reader["KlarTilDrift"]);
+                    tilladelse.TrafikSelskab = Convert.ToInt32(reader["TrafikSelskab"]);
+                    tilladelse.GyldigTil = Convert.ToDateTime(reader["GyldigTil"]);
+                    tilladelse.DatoForKøretøjsFørsteReg = Convert.ToDateTime(reader["DatoForKoretojsForsteReg"])
+                    tilladelsesliste.Add(tilladelse);
+                    firma.Tilladelsesliste = tilladelsesliste;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+            return firma;
+        }
     }
 }

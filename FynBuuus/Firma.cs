@@ -15,5 +15,11 @@ namespace FynBuuus
         public List<Priser> Prisliste { get; set; }
         public List<Tilladelser> Tilladelsesliste { get; set; }
         public List<Vogne> Vognliste { get; set; }
+        public void GetFullFirmaInfo(string CVRnr)
+        {
+            Firma fullFirma = new Firma();
+            fullFirma = DB_Connection.GetFirmaPriser(CVRnr);
+            fullFirma.Tilladelsesliste = DB_Connection.GetFirmaTilladelser(CVRnr).Tilladelsesliste;
+        }
     }
 }
