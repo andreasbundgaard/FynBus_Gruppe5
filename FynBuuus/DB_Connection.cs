@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows
+using System.Windows;
 
 namespace FynBuuus {
     class DB_Connection {
@@ -18,10 +18,10 @@ namespace FynBuuus {
                 );
             return con;
         }
-        public static Firma GetFirmaPriser(string CVRnr)
+        public static List<Firma> GetFirmaPriser(string CVRnr)
         {
             SqlConnection con = connectToSql();
-            Firma firma = new Firma();
+            List<Firma> firmaprisListe = new List<Firma>();
             try
             {
                 con.Open();
@@ -31,6 +31,7 @@ namespace FynBuuus {
                 SqlDataReader reader;
                 reader = sqlCmd.ExecuteReader();
                 Priser priser = new Priser();
+                Firma firma = new Firma();
                 List<Priser> prisliste = new List<Priser>();
                 while (reader.Read())
                 {
@@ -50,6 +51,7 @@ namespace FynBuuus {
                     priser.PriserKøreWH = Convert.ToInt32(reader["TimeprisKoretidWH"]);
                     prisliste.Add(priser);
                     firma.Prisliste = prisliste;
+                    firmaprisListe.Add(firma);
                 }
             }
             catch (Exception e)
@@ -61,12 +63,12 @@ namespace FynBuuus {
                 con.Close();
                 con.Dispose();
             }
-            return firma;
+            return firmaprisListe;
         }
-        public static Firma GetFirmaTilladelser(string CVRnr)
+        public static List<Firma> GetFirmaTilladelser(string CVRnr)
         {
             SqlConnection con = connectToSql();
-            Firma firma = new Firma();
+            List<Firma> firmaTillListe = new List<Firma>();
             try
             {
                 con.Open();
@@ -76,6 +78,7 @@ namespace FynBuuus {
                 SqlDataReader reader;
                 reader = sqlCmd.ExecuteReader();
                 Tilladelser tilladelse = new Tilladelser();
+                Firma firma = new Firma();
                 List<Tilladelser> tilladelsesliste = new List<Tilladelser>();
                 while (reader.Read())
                 {
@@ -84,18 +87,19 @@ namespace FynBuuus {
                     firma.Navn = reader["Navn"].ToString();
                     firma.YderligOplys = reader["YderligOplys"].ToString();
                     firma.SekundFirma = reader["SekunFirma"].ToString();
-                    tilladelse.TilladelseType = reader["TilladelsesType"].ToString();
-                    tilladelse.TilladelsesNr = reader["TilladelseNr"].ToString();
-                    tilladelse.FT_CVRnr = (reader["FT_CVRnr"]).ToString(); //Navn skal sikkert ændres i databasen
+                    tilladelse.TilladelseType = reader["TilladelseType"].ToString();
+                    tilladelse.TilladelsesNr = reader["TilladelsesNr"].ToString();
+                    tilladelse.FT_CVRnr = reader["FT_CVRnr"].ToString(); //Navn skal sikkert ændres i databasen
                     tilladelse.UdstedendeMyndighed = reader["UdstedendeMyndighed"].ToString();
                     tilladelse.RegNummer = reader["RegNummer"].ToString();
-                    tilladelse.BemærkningerTilDoku = reader["BemaerkningerTilDoku"].ToString();
+                    tilladelse.BemaerkningerTilDoku = reader["BemaerkningerTilDoku"].ToString();
                     tilladelse.KlarTilDrift = reader["KlarTilDrift"].ToString();
                     tilladelse.TrafikSelskab = reader["TrafikSelskab"].ToString();
                     tilladelse.GyldigTil = Convert.ToDateTime(reader["GyldigTil"]);
-                    tilladelse.DatoForKøretøjsFørsteReg = Convert.ToDateTime(reader["DatoForKoretojsForsteReg"])
+                    tilladelse.DatoForKoretojsForsteReg = Convert.ToDateTime(reader["DatoForKoretojsForsteReg"]);
                     tilladelsesliste.Add(tilladelse);
                     firma.Tilladelsesliste = tilladelsesliste;
+                    firmaTillListe.Add(firma);
                 }
             }
             catch (Exception e)
@@ -107,7 +111,7 @@ namespace FynBuuus {
                 con.Close();
                 con.Dispose();
             }
-            return firma;
+            return firmaTillListe;
         }
     }
 }
