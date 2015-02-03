@@ -20,34 +20,52 @@ namespace FynBuuus
     /// </summary>
     public partial class MainWindow : Window
     {  
-        List<string> tjekListe;
         Controller _controller = new Controller();
         public MainWindow()
         {
             InitializeComponent();
             _controller.FirmaPriserTilladelser("");
-            tjekListe = new List<string>();
             foreach (Firma f in _controller.Firmaliste)
             {
-                string navnCVRnr ="Firma: " + f.Navn + ", CVRnr: " + f.CVRnr;
+                string navnCVRnr = f.Navn;
                 CVR_List.Items.Add(navnCVRnr);
-                tjekListe.Add(navnCVRnr);
             }
         }
 
         private void Information_Click(object sender, RoutedEventArgs e) {
-            new Info_Window().Show();
-            this.Close(); 
+            Info_Window IW = new Info_Window();
+            try
+            {
+                foreach (Firma f in _controller.Firmaliste)
+                {
+                    if (f.Navn.Equals(CVR_List.SelectedItem))
+                    {
+                        IW.PreSelectedItem = f.CVRnr;
+                    }
+                }
+                IW.Show();
+                this.Close(); 
+            }
+            catch
+            {
+                MessageBox.Show("Intet valgt");
+            }
+            
         }
 
         private void CVR_List_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             FirmaInfo.Items.Clear();
-            for (int i = 0; i < tjekListe.Count; i++)
+            for (int i = 0; i < _controller.Firmaliste.Count; i++)
             {
-                if (tjekListe[i].Equals(CVR_List.SelectedItem))
+                if (_controller.Firmaliste[i].Navn.Equals(CVR_List.SelectedItem))
                 {
-                    string firmainformation = "Oplysninger: " + "\n" + _controller.Firmaliste[i].YderligOplys + "\nSekundært firma:\n" + _controller.Firmaliste[i].SekundFirma;
+                    string firmainformation = "Oplysninger: " + "\nCVRnr: " + _controller.Firmaliste[i].CVRnr + "\n" + _controller.Firmaliste[i].YderligOplys;
+                    if (_controller.Firmaliste[i].SekundFirma != "")
+                    {
+                        firmainformation = firmainformation + "\nSekundært firma:\n" + _controller.Firmaliste[i].SekundFirma;
+                    }
+                    firmainformation = firmainformation + "\nantal tilladelser: " + _controller.Firmaliste[i].Tilladelsesliste.Count;
                     FirmaInfo.Items.Add(firmainformation);
                 }
             }

@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Info_Window" Height="300" Width="409.544">
     <Grid>
-        <ListBox Name="HovedInfo_List" HorizontalAlignment="Left" Height="250" Margin="10,10,0,0" VerticalAlignment="Top" Width="250" SelectionChanged="ListBox_SelectionChanged"/>
         <Button Name="Detaljer" Content="Detaljer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Margin="280,10,0,0" Click="Detaljer_Click"/>
         <Button Name="Oversigt" Content="Tilbage til oversigt" HorizontalAlignment="Left" Margin="280,76,0,0" VerticalAlignment="Top" Width="105" Click="Oversigt_Click"/>
         <Button Name="Slet_Firma" Content="Slet Firma" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Margin="280,238,0,0"/>
+        <ComboBox Name="SelectInfo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="SelectInfo_SelectionChanged"/>
+        <ListBox Name="HovedInfo" HorizontalAlignment="Left" Height="216" VerticalAlignment="Top" Width="247" Margin="10,44,0,0"/>
 
     </Grid>
 </Window>

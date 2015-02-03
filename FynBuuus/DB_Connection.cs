@@ -49,6 +49,7 @@ namespace FynBuuus {
                     priser.SGebyrWH = Convert.ToInt32(reader["OpstartsGebyrWH"]);
                     priser.PrisVenteWH = Convert.ToInt32(reader["TimeprisVentetidWH"]);
                     priser.PriserKøreWH = Convert.ToInt32(reader["TimeprisKoretidWH"]);
+                    priser.TypeVogn = reader["Vogntype"].ToString();
                     prisliste.Add(priser);
                     firma.Prisliste = prisliste;
                     firmaprisListe.Add(firma);
@@ -63,30 +64,6 @@ namespace FynBuuus {
                 con.Close();
                 con.Dispose();
             }
-            //for (int i = 0; i < firmaprisListe.Count; i++)
-            //{
-            //    for(int j = 0; j < prisliste.Count; j++)
-            //    {
-            //        if (firmaprisListe[i].CVRnr == prisliste[j].CVRnr)
-            //        {
-            //            for (int k = 0; k < 10; k++)
-            //            {
-            //                firmaprisListe[i].Prisliste.Add(prisliste[j]);
-            //                //firmaprisListe[i].Prisliste[k].PrisKøreAN = prisliste[j].PrisKøreAN;
-            //                //firmaprisListe[i].Prisliste[k].PriserKøreWH = prisliste[j].PriserKøreWH;
-            //                //firmaprisListe[i].Prisliste[k].PrisKøreH = prisliste[j].PrisKøreH;
-            //                //firmaprisListe[i].Prisliste[k].PrisTrappeLøft = prisliste[j].PrisTrappeLøft;
-            //                //firmaprisListe[i].Prisliste[k].PrisVenteAN = prisliste[j].PrisVenteAN;
-            //                //firmaprisListe[i].Prisliste[k].PrisVenteH = prisliste[j].PrisVenteH;
-            //                //firmaprisListe[i].Prisliste[k].PrisVenteWH = prisliste[j].PrisVenteWH;
-            //                //firmaprisListe[i].Prisliste[k].SGebyrAN = prisliste[j].SGebyrAN;
-            //                //firmaprisListe[i].Prisliste[k].SGebyrH = prisliste[j].SGebyrH;
-            //                //firmaprisListe[i].Prisliste[k].SGebyrWH = prisliste[j].SGebyrWH;
-            //                //firmaprisListe[i].Prisliste[k].TypeVogn = prisliste[j].TypeVogn;
-            //            }
-            //        }
-            //    }
-            //}
             return firmaprisListe;
         }
         public static List<Firma> GetFirmaTilladelser(string CVRnr)
@@ -101,12 +78,11 @@ namespace FynBuuus {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlDataReader reader;
                 reader = sqlCmd.ExecuteReader();
-                Tilladelser tilladelse = new Tilladelser();
-                Firma firma = new Firma();
                 List<Tilladelser> tilladelsesliste = new List<Tilladelser>();
                 while (reader.Read())
                 {
-
+                    Tilladelser tilladelse = new Tilladelser();
+                    Firma firma = new Firma();
                     firma.CVRnr = reader["CVRnr"].ToString();
                     firma.Navn = reader["Navn"].ToString();
                     firma.YderligOplys = reader["YderligOplys"].ToString();
