@@ -84,14 +84,14 @@ namespace FynBuuus {
                     firma.Navn = reader["Navn"].ToString();
                     firma.YderligOplys = reader["YderligOplys"].ToString();
                     firma.SekundFirma = reader["SekunFirma"].ToString();
-                    tilladelse.TilladelsesType = Convert.ToInt32(reader["TilladelsesType"]);
-                    tilladelse.TilladelsesNr = Convert.ToInt32(reader["TilladelseNr"]);
-                    tilladelse.CVRnr = Convert.ToInt32(reader["CVRnr"]); //Navn skal sikkert ændres i databasen
-                    tilladelse.UdstedendeMyndighed = Convert.ToInt32(reader["UdstedendeMyndighed"]);
-                    tilladelse.RegNummer = Convert.ToInt32(reader["RegNummer"]);
-                    tilladelse.BemærkningerTilDoku = Convert.ToInt32(reader["BemaerkningerTilDoku"]);
-                    tilladelse.KlarTilDrift = Convert.ToInt32(reader["KlarTilDrift"]);
-                    tilladelse.TrafikSelskab = Convert.ToInt32(reader["TrafikSelskab"]);
+                    tilladelse.TilladelseType = reader["TilladelsesType"].ToString();
+                    tilladelse.TilladelsesNr = reader["TilladelseNr"].ToString();
+                    tilladelse.FT_CVRnr = (reader["FT_CVRnr"]).ToString(); //Navn skal sikkert ændres i databasen
+                    tilladelse.UdstedendeMyndighed = reader["UdstedendeMyndighed"].ToString();
+                    tilladelse.RegNummer = reader["RegNummer"].ToString();
+                    tilladelse.BemærkningerTilDoku = reader["BemaerkningerTilDoku"].ToString();
+                    tilladelse.KlarTilDrift = reader["KlarTilDrift"].ToString();
+                    tilladelse.TrafikSelskab = reader["TrafikSelskab"].ToString();
                     tilladelse.GyldigTil = Convert.ToDateTime(reader["GyldigTil"]);
                     tilladelse.DatoForKøretøjsFørsteReg = Convert.ToDateTime(reader["DatoForKoretojsForsteReg"])
                     tilladelsesliste.Add(tilladelse);

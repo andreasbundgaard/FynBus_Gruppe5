@@ -12,15 +12,15 @@ namespace FynBuuus
 
         public string TilladelseType { get; set; }
 
-        public string GyldigTil { get; set; }
+        public DateTime GyldigTil { get; set; }
 
-        public string UdstendeMyndighed { get; set; }
+        public string UdstedendeMyndighed { get; set; }
 
         public string RegNummer { get; set; }
 
-        public string DatoForKoretojsForsteReg { get; set; }
+        public DateTime DatoForKøretøjsFørsteReg { get; set; }
 
-        public string BemaerkningerTilDoku { get; set; }
+        public string BemærkningerTilDoku { get; set; }
 
         public string KlarTilDrift { get; set; }
 
