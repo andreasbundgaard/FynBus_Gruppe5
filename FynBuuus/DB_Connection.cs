@@ -22,6 +22,7 @@ namespace FynBuuus {
         {
             SqlConnection con = connectToSql();
             List<Firma> firmaprisListe = new List<Firma>();
+            List<Priser> prisliste = new List<Priser>();
             try
             {
                 con.Open();
@@ -30,16 +31,15 @@ namespace FynBuuus {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlDataReader reader;
                 reader = sqlCmd.ExecuteReader();
-                Priser priser = new Priser();
-                Firma firma = new Firma();
-                List<Priser> prisliste = new List<Priser>();
                 while (reader.Read())
                 {
-
+                    Priser priser = new Priser();
+                    Firma firma = new Firma();
                     firma.CVRnr = reader["CVRnr"].ToString();
                     firma.Navn = reader["Navn"].ToString();
                     firma.YderligOplys = reader["YderligOplys"].ToString();
                     firma.SekundFirma = reader["SekunFirma"].ToString();
+                    priser.CVRnr = reader["F_CVRnr"].ToString();
                     priser.SGebyrH = Convert.ToInt32(reader["OpstartsGebyrH"]);
                     priser.PrisVenteH = Convert.ToInt32(reader["TimeprisVentetidH"]);
                     priser.PrisKøreH = Convert.ToInt32(reader["TimepriskoretidH"]);
@@ -63,6 +63,30 @@ namespace FynBuuus {
                 con.Close();
                 con.Dispose();
             }
+            //for (int i = 0; i < firmaprisListe.Count; i++)
+            //{
+            //    for(int j = 0; j < prisliste.Count; j++)
+            //    {
+            //        if (firmaprisListe[i].CVRnr == prisliste[j].CVRnr)
+            //        {
+            //            for (int k = 0; k < 10; k++)
+            //            {
+            //                firmaprisListe[i].Prisliste.Add(prisliste[j]);
+            //                //firmaprisListe[i].Prisliste[k].PrisKøreAN = prisliste[j].PrisKøreAN;
+            //                //firmaprisListe[i].Prisliste[k].PriserKøreWH = prisliste[j].PriserKøreWH;
+            //                //firmaprisListe[i].Prisliste[k].PrisKøreH = prisliste[j].PrisKøreH;
+            //                //firmaprisListe[i].Prisliste[k].PrisTrappeLøft = prisliste[j].PrisTrappeLøft;
+            //                //firmaprisListe[i].Prisliste[k].PrisVenteAN = prisliste[j].PrisVenteAN;
+            //                //firmaprisListe[i].Prisliste[k].PrisVenteH = prisliste[j].PrisVenteH;
+            //                //firmaprisListe[i].Prisliste[k].PrisVenteWH = prisliste[j].PrisVenteWH;
+            //                //firmaprisListe[i].Prisliste[k].SGebyrAN = prisliste[j].SGebyrAN;
+            //                //firmaprisListe[i].Prisliste[k].SGebyrH = prisliste[j].SGebyrH;
+            //                //firmaprisListe[i].Prisliste[k].SGebyrWH = prisliste[j].SGebyrWH;
+            //                //firmaprisListe[i].Prisliste[k].TypeVogn = prisliste[j].TypeVogn;
+            //            }
+            //        }
+            //    }
+            //}
             return firmaprisListe;
         }
         public static List<Firma> GetFirmaTilladelser(string CVRnr)

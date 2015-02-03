@@ -47,7 +47,7 @@ namespace FynBuuus
             {
                 if (tjekListe[i].Equals(CVR_List.SelectedItem))
                 {
-                    string firmainformation = "OpLysninger: " + "\n" + _controller.Firmaliste[i].YderligOplys + "\nSenkundært firma:\n" + _controller.Firmaliste[i].SekundFirma;
+                    string firmainformation = "Oplysninger: " + "\n" + _controller.Firmaliste[i].YderligOplys + "\nSekundært firma:\n" + _controller.Firmaliste[i].SekundFirma;
                     FirmaInfo.Items.Add(firmainformation);
                 }
             }

@@ -28,7 +28,6 @@ namespace FynBuuus
                 {
                     fullList[i].Tilladelsesliste = tempList[j].Tilladelsesliste;
                 }
-                
             }
             return fullList;
         }
